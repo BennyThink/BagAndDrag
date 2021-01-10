@@ -23,8 +23,8 @@ con = pymysql.Connect(host="127.0.0.1", user="root", password="root", database="
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(filename)s [%(levelname)s]: %(message)s')
 
 COOKIES = os.path.join(os.path.dirname(__file__), 'cookies.dump')
-USERNAME = os.environ.get("USERNAME") or "312"
-PASSWORD = os.environ.get("PASSWORD") or "xassge"
+USERNAME = os.environ.get("USERNAME") or "321"
+PASSWORD = os.environ.get("PASSWORD") or "xa31sge"
 
 GET_USER = "http://www.rrys2020.com/user/login/getCurUserTopInfo"
 AJAX_LOGIN = "http://www.rrys2020.com/User/Login/ajaxLogin"
