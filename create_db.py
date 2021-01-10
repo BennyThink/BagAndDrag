@@ -9,9 +9,10 @@ __author__ = "Benny <benny.think@gmail.com>"
 
 import pymysql
 
-con = pymysql.Connect(host="127.0.0.1", user="root", password="root", database="yyets", charset="utf8mb4")
+con = pymysql.Connect(host="127.0.0.1", user="root", password="root", charset="utf8mb4")
 
 sql = [
+    "CREATE DATABASE yyets CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci;",
     """
     create table resource
     (
@@ -22,7 +23,7 @@ sql = [
         expire_cst varchar(255) null,
         data       longtext     null
     
-    );
+    )charset utf8mb4;
     
     
     """,
@@ -32,7 +33,7 @@ sql = [
     (
         id        int primary key not null,
         traceback longtext        null
-    );
+    )charset utf8mb4;
     """,
 
 ]
