@@ -18,7 +18,6 @@ import json
 import traceback
 import time
 
-con = pymysql.Connect(host="127.0.0.1", user="root", password="root", database="yyets", charset="utf8mb4")
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(filename)s [%(levelname)s]: %(message)s')
 
@@ -70,6 +69,7 @@ def insert_db(data: dict):
     try:
         # INSERT INTO resource VALUE(id,url,name,expire,data)
         sql = "INSERT INTO resource VALUE(%s,%s,%s,%s,%s,%s)"
+        con = pymysql.Connect(host="127.0.0.1", user="root", password="root", database="yyets", charset="utf8mb4")
         cur = con.cursor()
         info = data["data"]["info"]
         id = info["id"]
@@ -90,6 +90,7 @@ def insert_db(data: dict):
 def insert_error(rid, tb):
     logging.warning("Logging error into database %s", rid)
     sql = "INSERT INTO failure VALUE (%s,%s)"
+    con = pymysql.Connect(host="127.0.0.1", user="root", password="root", database="yyets", charset="utf8mb4")
     cur = con.cursor()
     cur.execute(sql, (rid, tb))
     con.commit()
