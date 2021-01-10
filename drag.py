@@ -20,6 +20,8 @@ from bag import SHARE_URL, API_DATA, load_cookies, is_cookie_valid, login, inser
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(filename)s [%(levelname)s]: %(message)s')
 s = requests.session()
+ua = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36"
+s.headers.update({"User-Agent": ua})
 
 parser = argparse.ArgumentParser()
 # start_id, end_id, interval, concurrency

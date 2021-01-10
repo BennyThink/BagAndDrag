@@ -18,7 +18,6 @@ import json
 import traceback
 import time
 
-
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(filename)s [%(levelname)s]: %(message)s')
 
 COOKIES = os.path.join(os.path.dirname(__file__), 'cookies.dump')
@@ -31,6 +30,7 @@ RESOURCE = "http://www.rrys2020.com/resource/{id}"
 SHARE_URL = "http://www.rrys2020.com/resource/ushare"
 # http://got002.com/api/v1/static/resource/detail?code=9YxN91
 API_DATA = "http://got002.com/api/v1/static/resource/detail?code={code}"
+ua = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36"
 
 
 def save_cookies(requests_cookiejar):
@@ -47,7 +47,7 @@ def load_cookies():
 def login():
     data = {"account": USERNAME, "password": PASSWORD, "remember": 1}
     logging.info("login in as %s", data)
-    r = requests.post(AJAX_LOGIN, data=data)
+    r = requests.post(AJAX_LOGIN, data=data, headers={"User-Agent": ua})
     resp = r.json()
     if resp.get('status') == 1:
         logging.info("Login success! %s", r.cookies)
@@ -60,7 +60,7 @@ def login():
 
 def is_cookie_valid() -> bool:
     cookie = load_cookies()
-    r = requests.get(GET_USER, cookies=cookie)
+    r = requests.get(GET_USER, cookies=cookie, headers={"User-Agent": ua})
     return r.json()['status'] == 1
 
 
