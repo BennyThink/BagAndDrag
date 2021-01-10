@@ -22,8 +22,8 @@ s = requests.session()
 
 parser = argparse.ArgumentParser()
 # start_id, end_id, interval, concurrency
-parser.add_argument("-s", help="Start id", type=int, default=36736)
-parser.add_argument("-e", help="End id", type=int, default=36740)
+parser.add_argument("-s", help="Start id", type=int, default=1)
+parser.add_argument("-e", help="End id", type=int, default=999999)
 parser.add_argument("-i", help="Interval", default=10, type=int)
 parser.add_argument("-c", help="Concurrency", default=2, type=int)
 args = parser.parse_args()
