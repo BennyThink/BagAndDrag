@@ -71,6 +71,6 @@ def dump_index():
 
 
 if __name__ == '__main__':
-    # convert_kv()
-    # verify_kv_data()
+    convert_kv()
+    verify_kv_data()
     dump_index()
