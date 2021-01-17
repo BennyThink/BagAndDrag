@@ -31,7 +31,7 @@ def convert_kv():
         write_data = []
         for datum in data:
             write_data.append({
-                "key": datum["id"],
+                "key": str(datum["id"]),  # keys need to be str
                 "value": datum['data']}
             )
         with open(f"kv/kv_data{i - 1}.json", "w") as f:
@@ -69,7 +69,19 @@ def dump_index():
         json.dump(write_data, f, ensure_ascii=False, indent=2)
 
 
+def generate_command():
+    files = os.listdir("kv")
+    tpl = "wrangler kv:bulk put --namespace-id=01d666b5ebae464193998bb074f672cf {filename}"
+    shell = []
+    for file in files:
+        if file.endswith(".json"):
+            shell.append(tpl.format(filename=file) + "\n")
+    with open("kv/bulk.sh", "w") as f:
+        f.writelines(shell)
+
+
 if __name__ == '__main__':
-    convert_kv()
-    verify_kv_data()
-    dump_index()
+    # convert_kv()
+    # verify_kv_data()
+    # dump_index()
+    generate_command()
