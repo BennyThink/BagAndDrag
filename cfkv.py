@@ -42,9 +42,10 @@ def verify_kv_data():
     files = os.listdir("kv")
     rows = 0
     for file in files:
-        with open(f"kv/{file}") as f:
-            data = json.load(f)
-            rows += len(data)
+        if file.startswith("kv_data"):
+            with open(f"kv/{file}") as f:
+                data = json.load(f)
+                rows += len(data)
     print(rows, count)
     # assert rows == count
 
