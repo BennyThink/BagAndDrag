@@ -32,7 +32,7 @@ def convert_kv():
         for datum in data:
             write_data.append({
                 "key": datum["id"],
-                "value": json.loads(datum['data'])}
+                "value": datum['data']}
             )
         with open(f"kv/kv_data{i - 1}.json", "w") as f:
             json.dump(write_data, f, ensure_ascii=False)
@@ -63,7 +63,7 @@ def dump_index():
         write_data = [
             {
                 "key": "index",
-                "value": indexes
+                "value": json.dumps(indexes, ensure_ascii=False)
             }
         ]
         json.dump(write_data, f, ensure_ascii=False, indent=2)
