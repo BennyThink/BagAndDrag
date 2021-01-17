@@ -81,7 +81,7 @@ def generate_command():
 
 
 if __name__ == '__main__':
-    # convert_kv()
-    # verify_kv_data()
-    # dump_index()
+    convert_kv()
+    verify_kv_data()
+    dump_index()
     generate_command()
