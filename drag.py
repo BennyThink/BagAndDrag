@@ -13,7 +13,6 @@ import time
 import requests
 import traceback
 from concurrent.futures import ThreadPoolExecutor
-from tqdm import trange
 from tqdm import tqdm
 
 from bag import SHARE_URL, API_DATA, load_cookies, is_cookie_valid, login, insert_db, insert_error
