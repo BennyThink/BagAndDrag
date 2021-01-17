@@ -59,7 +59,12 @@ def dump_index():
         rid = datum["id"]
         indexes[name] = rid
     with open("kv/index.json", "w") as f:
-        write_data = [dict(index=indexes)]
+        write_data = [
+            {
+                "key": "index",
+                "value": indexes
+            }
+        ]
         json.dump(write_data, f, ensure_ascii=False, indent=2)
 
 
@@ -67,4 +72,3 @@ if __name__ == '__main__':
     convert_kv()
     verify_kv_data()
     dump_index()
-    con.close()
